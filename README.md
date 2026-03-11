@@ -1,56 +1,56 @@
-# Finance App
+# Finance App (App de Finanças)
 
-A comprehensive personal finance management application built with a modern tech stack.
+Uma aplicação completa de gerenciamento financeiro pessoal construída com as tecnologias mais modernas.
 
-## 🚀 Features
+## 🚀 Funcionalidades
 
-- **Dashboard**: Track your balance, income, and expenses in real-time.
-- **Transaction Management**: Add, update, and delete financial transactions easily.
-- **Financial Goals (Cofrinho)**: Set targets and deposit money manually.
-- **Visual Insights**: Interactive charts using Recharts for category-wise analysis.
-- **Secure Authentication**: Built-in support for Firebase Auth.
+- **Dashboard**: Acompanhe seu saldo, receitas e despesas em tempo real.
+- **Gerenciamento de Transações**: Adicione, atualize e exclua transações financeiras com facilidade.
+- **Metas Financeiras (Cofrinho)**: Defina objetivos e deposite dinheiro manualmente.
+- **Insights Visuais**: Gráficos interativos usando Recharts para análise por categoria.
+- **Autenticação Segura**: Suporte integrado com Firebase Auth.
 
-## 🛠️ Tech Stack
+## 🛠️ Tecnologias Utilizadas
 
 - **Front-end**: Next.js 14, React, Vanilla CSS.
-- **Back-end**: Firebase Cloud Functions (Node.js), Firestore Database.
-- **Visualization**: Recharts.
-- **Architecture**: 3-Layer Automation System (Directives, Orchestration, Execution).
+- **Back-end**: Firebase Cloud Functions (Node.js), Banco de Dados Firestore.
+- **Visualização**: Recharts.
+- **Arquitetura**: Sistema de Automação de 3 Camadas (Diretrizes, Orquestração, Execução).
 
-## 📂 Project Structure
+## 📂 Estrutura do Projeto
 
-- `frontend/`: Next.js web application.
-- `backend/`: Firebase Cloud Functions and Firestore rules.
-- `directives/`: System Operating Procedures (SOPs) for the AI agent.
-- `execution/`: Deterministic execution scripts.
+- `frontend/`: Aplicação web Next.js.
+- `backend/`: Cloud Functions do Firebase e regras do Firestore.
+- `directives/`: Procedimentos Operacionais Padrão (SOPs) para o agente de IA.
+- `execution/`: Scripts de execução determinística.
 
-## 🚦 Getting Started
+## 🚦 Começando
 
-### Prerequisites
+### Pré-requisitos
 
 - Node.js (v18+)
 - Firebase CLI (`npm install -g firebase-tools`)
 
-### Setup
+### Configuração
 
-1. **Clone the repo**
+1. **Clone o repositório**
    ```bash
    git clone https://github.com/ViniciusFerreira2001/finance-app.git
    ```
 
-2. **Frontend Setup**
+2. **Configuração do Frontend**
    ```bash
    cd frontend
    npm install
    npm run dev
    ```
 
-3. **Backend Setup**
+3. **Configuração do Backend**
    ```bash
    cd backend/functions
    npm install
    ```
 
-## 📜 License
+## 📜 Licença
 
-Private project for personal finance management.
+Projeto privado para gerenciamento de finanças pessoais.
