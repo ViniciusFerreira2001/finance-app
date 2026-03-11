@@ -1,0 +1,57 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // All other collections are locked down by default.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    match /transactions/{transactionId} {
+
+      // Helper: checks that the authenticated user owns this document
+      function isOwner() {
+        return request.auth != null && resource.data.userId == request.auth.uid;
+      }
+
+      // Helper: checks the required fields are present and valid on create
+      function isValidTransaction() {
+        let data = request.resource.data;
+        return data.keys().hasAll(['userId', 'type', 'amount', 'category', 'date', 'createdAt'])
+          && data.userId == request.auth.uid
+          && data.type in ['income', 'expense']
+          && data.amount is number
+          && data.amount > 0
+          && data.category is string
+          && data.category.size() > 0;
+      }
+
+      // Helper: checks that only allowed fields are being updated
+      function isValidUpdate() {
+        let allowed = ['amount', 'category', 'description'].toSet();
+        let changed = request.resource.data.diff(resource.data).affectedKeys();
+        return changed.hasOnly(allowed)
+          && (
+            !('amount' in changed)
+            || (request.resource.data.amount is number && request.resource.data.amount > 0)
+          )
+          && (
+            !('category' in changed)
+            || (request.resource.data.category is string && request.resource.data.category.size() > 0)
+          );
+      }
+
+      // READ: user can only read their own transactions
+      allow get, list: if request.auth != null && resource.data.userId == request.auth.uid;
+
+      // CREATE: only authenticated user, only their own data, only valid shape
+      allow create: if request.auth != null && isValidTransaction();
+
+      // UPDATE: only owner, only allowed fields
+      allow update: if isOwner() && isValidUpdate();
+
+      // DELETE: only owner
+      allow delete: if isOwner();
+    }
+  }
+}
